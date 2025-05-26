@@ -9,7 +9,9 @@
 
 <button type="button" @onclick="() => Search()" class="btn btn-primary mt-2">Search</button>
 
-<p>@(answer == null ? "No search yet" : $"{answer.Count} Pokémon found")</p>
+<button type="button" @onclick="GetAll" class="btn btn-danger mt-2" style="margin-left: 20px;">
+    Get All Pokémon
+</button>
 
 @if (answer?.Count > 0)
 {
@@ -68,5 +70,9 @@ else if (answer != null)
 
         answer = await Repo.ReturnPokemonLikeAsync(pokemonName);
     }
-}
 
+    public async Task GetAll()
+    {
+        answer = await Repo.GetAllPokemonInfoAsync();
+    }
+}
