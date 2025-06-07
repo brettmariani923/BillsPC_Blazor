@@ -1,0 +1,75 @@
+﻿.input-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bottom-left-input {
+    position: fixed;
+    top: 400px; 
+    left: 10px; 
+    padding: 10px; 
+    z-index: 1000; 
+}
+
+.bottom-right-input {
+    position: fixed;
+    top: 423px;
+    right: 12px;
+    padding: 10px;
+    z-index: 1000;
+}
+
+.red-border {
+    border: 2px solid red;
+    display: inline-block; /* keeps border tight around text */
+    padding: 0.25rem 0.5rem; /* add some spacing */
+    border-radius: 6px;
+}
+
+.layout-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.sidebar {
+    width: 220px;
+    border-left: 1px solid #ccc;
+    background-color: #f8f9fa; /* light background */
+}
+
+.page-container {
+    display: flex;
+    height: 100vh; /* full viewport height */
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 250px; /* fixed width for nav */
+    background-color: #222; /* or whatever nav bg color */
+    color: white;
+    padding: 1rem;
+    box-sizing: border-box;
+    /* Keep nav full height */
+    height: 100vh;
+    position: fixed; /* keeps it always on left while scrolling */
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+}
+
+.main-content {
+    margin-left: 250px; /* leave space for sidebar */
+    flex: 1; /* fill rest of screen */
+    display: flex;
+    justify-content: center; /* center horizontally */
+    align-items: flex-start; /* align top, or center if you want vertically centered */
+    padding: 2rem;
+    box-sizing: border-box;
+    min-height: 100vh;
+}

@@ -1,7 +1,10 @@
 ﻿@page "/search-pokemon"
 @using BillsPC.Shared.Models
 @using BillsPC.Repos
+@using BillsPC.Services
 @inject IPokemonRepo Repo
+@inject PokeApiService PokeApiService
+
 
 <h3>Search Pokémon</h3>
 
@@ -9,7 +12,7 @@
 
 <button type="button" @onclick="() => Search()" class="btn btn-primary mt-2">Search</button>
 
-<button type="button" @onclick="GetAll" class="btn btn-danger mt-2" style="margin-left: 20px;">
+<button type="button" @onclick="GetAll" class="btn btn-primary mt-2" style="margin-left: 20px;">
     Get All Pokémon
 </button>
 
@@ -18,6 +21,7 @@
     <table class="table mt-3">
         <thead>
             <tr>
+                <th>Image</th>
                 <th>PokemonID</th>
                 <th>Name</th>
                 <th>HP</th>
@@ -35,6 +39,16 @@
             @foreach (var p in answer)
             {
                 <tr>
+                    <td>
+                        @if (imageUrls.TryGetValue(p.Name.ToLower(), out var url))
+                        {
+                            <img src="@url" alt="@p.Name" width="60" height="60" />
+                        }
+                        else
+                        {
+                            <span>Loading...</span>
+                        }
+                    </td>
                     <td>@p.PokemonID</td>
                     <td>@p.Name</td>
                     <td>@p.HP</td>
@@ -49,6 +63,7 @@
                 </tr>
             }
         </tbody>
+
     </table>
 }
 else if (answer != null)
@@ -59,9 +74,12 @@ else if (answer != null)
 @code {
     public string pokemonName = string.Empty;
     public List<PokemonInfo> answer;
+    private Dictionary<string, string> imageUrls = new();
 
     public async Task Search()
     {
+        imageUrls.Clear();
+
         if (string.IsNullOrWhiteSpace(pokemonName))
         {
             answer = new List<PokemonInfo>();
@@ -69,10 +87,26 @@ else if (answer != null)
         }
 
         answer = await Repo.ReturnPokemonLikeAsync(pokemonName);
+
+        foreach (var p in answer)
+        {
+            var url = await PokeApiService.GetPokemonImageUrlAsync(p.Name);
+            if (url != null)
+                imageUrls[p.Name.ToLower()] = url;
+        }
     }
 
     public async Task GetAll()
     {
+        imageUrls.Clear();
         answer = await Repo.GetAllPokemonInfoAsync();
+
+        foreach (var p in answer)
+        {
+            var url = await PokeApiService.GetPokemonImageUrlAsync(p.Name);
+            if (url != null)
+                imageUrls[p.Name.ToLower()] = url;
+        }
     }
 }
+

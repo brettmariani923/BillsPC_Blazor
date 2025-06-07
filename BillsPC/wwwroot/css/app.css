@@ -1,0 +1,30 @@
+html {
+  font-size: 14px;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.red-box {
+    border: 3px solid red;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 100px;
+    margin: 40px auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.red-border {
+    border: 2px solid red;
+    display: inline-block; /* keeps border tight around text */
+    padding: 0.25rem 0.5rem; /* add some spacing */
+    border-radius: 6px;
+}
+

@@ -1,10 +1,10 @@
-using BillsPC.Repos;
-using System.Data;
+﻿using BillsPC.Repos;
+using BillsPC.Services;
 using Microsoft.Data.SqlClient;
+using System.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Database connection scoped per request
 builder.Services.AddScoped<IDbConnection>(s =>
 {
     var db = new SqlConnection(builder.Configuration.GetConnectionString("DefaultConnection"));
@@ -13,11 +13,9 @@ builder.Services.AddScoped<IDbConnection>(s =>
 });
 
 builder.Services.AddScoped<IPokemonRepo, PokemonRepo>();
+builder.Services.AddHttpClient<PokeApiService>();
+builder.Services.AddScoped<PokeApiService>();
 
-// Add HttpClient factory
-builder.Services.AddHttpClient();
-
-// Add Blazor Server services
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 
@@ -34,11 +32,9 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.MapBlazorHub();
-app.MapFallbackToPage("/_Host");
-
 app.MapRazorPages();
-
 app.MapControllers();
 
+app.MapBlazorHub();
+app.MapFallbackToPage("/_Host"); // last
 app.Run();
