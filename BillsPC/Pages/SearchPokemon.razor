@@ -6,15 +6,21 @@
 @inject PokeApiService PokeApiService
 
 
-<h3>Search Pokémon</h3>
+<h3 class="text-center mt-4 mb-4"><strong>Search Pokémon</strong></h3>
 
-<input @bind="pokemonName" placeholder="Enter Pokemon name" class="form-control" />
+<!-- Styled container -->
+<div class="d-flex justify-content-center">
+    <div class="p-4" style="border: 2px solid red; border-radius: 10px; width: 100%; max-width: 600px;">
+        <div class="mb-3">
+            <input @bind="pokemonName" placeholder="Enter name" class="form-control" />
+        </div>
 
-<button type="button" @onclick="() => Search()" class="btn btn-primary mt-2">Search</button>
-
-<button type="button" @onclick="GetAll" class="btn btn-primary mt-2" style="margin-left: 20px;">
-    Get All Pokémon
-</button>
+        <div class="d-flex gap-2">
+            <button class="btn btn-primary" @onclick="Search">Search</button>
+            <button class="btn btn-secondary" @onclick="GetAll">Search All Pokémon</button>
+        </div>
+    </div>
+</div>
 
 @if (answer?.Count > 0)
 {

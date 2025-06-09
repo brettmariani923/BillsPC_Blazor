@@ -1,39 +1,26 @@
 ﻿@using Microsoft.AspNetCore.Components.Routing
 
-<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/">Bill's PC</a>
-    </div>
+<div class="navbar navbar-dark bg-danger px-3">
+    <a class="navbar-brand" href="/">Bill's PC</a>
 </div>
 
-<input type="checkbox" id="nav-toggle" class="navbar-toggler" title="Navigation menu" />
-<label for="nav-toggle" class="navbar-toggler-label">☰</label>  <!-- Example label for toggle -->
+<nav class="nav flex-column mt-3">
+    <NavLink class="nav-link px-3" href="/" Match="NavLinkMatch.All">
+        🏠 Home
+    </NavLink>
+    <NavLink class="nav-link px-3" href="/about">
+        ➕ Info
+    </NavLink>
+   
+    <NavLink class="nav-link px-3" href="/search-pokemon">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"
+             alt="Poké Ball"
+             width="20"
+             height="20"
+             class="me-1"
+             style="vertical-align: middle;" />Pokemon
+    </NavLink>
 
-<div class="nav-scrollable">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
 
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/counter">
-                <span class="bi bi-plus-square-fill" aria-hidden="true"></span> Counter
-            </NavLink>
-        </div>
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/weather">
-                <span class="bi bi-list-nested" aria-hidden="true"></span> Weather
-            </NavLink>
-        </div>
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/search-pokemon">
-                <span class="bi bi-joystick" aria-hidden="true"></span> Pokemon
-            </NavLink>
-        </div>
-    </nav>
-</div>
+</nav>
 

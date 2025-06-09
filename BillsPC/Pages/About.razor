@@ -1,0 +1,34 @@
+﻿@page "/about"
+@rendermode InteractiveServer
+
+<PageTitle><strong>About This Website</strong></PageTitle>
+
+<div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="p-4 mx-auto" style="border: 2px solid red; border-radius: 10px; width: 100%; max-width: 600px;">
+        <h1>About This Website</h1>
+
+        <p>
+            Welcome to my Pokémon Database! This site offers detailed information on all Pokémon species up to Generation 8 — a total of 926 entries.
+        </p>
+
+        <p>
+            The core data for this application — including base stats, types, abilities, and other attributes — is stored in a database. Bulk insert scripts are provided at the bottom of the application. To get started, simply create a SQLServer database, connect it to the application, and then run the files located at the bottom of the SQLServer layer, first in the tables section to create the table, and then for the corresponding SeedTable to populate it. Be sure to configure your connection string correctly in the <code>appsettings.json</code> file found within the <code>BillsPC_CleanArchitecture.Api</code> project. The database includes every column of Pokémon data except for the image files.
+        </p>
+
+        <p>
+            Images are dynamically loaded from the <a href="https://pokeapi.co" target="_blank" rel="noopener noreferrer">PokeAPI</a> — a trusted public API that serves official artwork and sprites. Since the site fetches artwork for over 900 Pokémon, the initial load when selecting “View All Pokémon” may take up to 120 seconds. After this, the images are cached locally for significantly faster access.
+        </p>
+
+        <p>
+            For easier searching, the search box supports partial matches. Just type the beginning of a Pokémon’s name, and the site will suggest relevant results.
+        </p>
+
+        <p>
+            This project was created to offer Pokémon fans and collectors a reliable, searchable, and easy-to-use resource. I hope you find it helpful and enjoyable to use!
+        </p>
+
+        <p>
+            Have feedback or questions? Feel free to <a href="https://discord.com/channels/brett_mariani/">reach out to me on Discord</a>.
+        </p>
+    </div>
+</div>
