@@ -3,7 +3,7 @@ MVC vs Blazor Comparison Website
 This project showcases a website implemented twice — once using ASP.NET MVC and once using Blazor — with the goal of comparing these two web development frameworks from Microsoft. By building the same website with both approaches, this project highlights their differences in architecture, development style, performance, and user experience.
 Overview
 
-The website provides the same functionality and UI in two parallel implementations:
+The website provides the same functionality in two parallel implementations:
 
     MVC Version: Uses ASP.NET Core MVC with traditional Razor views and controllers.
 
